@@ -1,0 +1,14 @@
+Descripcion.
+
+En esta aplicacion se requiere un login ya que la aplicacion se va ejecutar en la intranet, por lo tanto en la base de datos  se debe tener almacenados los datos del nombre de los usuarios de red que tiene privilegios para acceder a esta informacion tambien la aplicacion contara con una sesion de administracion de roles.
+
+    -El usuario intenta acceder a la aplicacion.
+    -La aplicacion lee el nombre del usuario de red que intenta aceeder.
+    -El  nombre de usuario se envia a la base de datos para validar que dicho usuario     esta registrado y tiene permiso para acceder a la informacion pertinente.
+    -En caso de que el nombre de usuario no este registrado en la base de datos se     muestra un mensaje de error: no tiene permiso para acceder al sistema comunicarse     con el administrador.
+    -El usuario se autentica correctamente en el sistema.
+
+Criterios de aceptacion.
+
+-Ingresar con un usuario que no este registrado en la base de datos, y comprobar de que salga el error respectivo.
+-Ingresar un usuario con permisos y verificar que puede acceder a la aplicacion. 

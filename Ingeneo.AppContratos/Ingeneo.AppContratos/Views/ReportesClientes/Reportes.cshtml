@@ -1,0 +1,273 @@
+﻿@model Ingeneo.AppContratos.Models.Cliente
+
+@{
+    ViewBag.Title = "Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/Report")
+    @Scripts.Render("~/Scripts/PolicyCobRep.js")
+}
+   
+<div>
+
+    <hr />
+    <a class="btn btn-primary" id="back" href="/Clientes/Index"><span class="glyphicon glyphicon-user"></span> Regresar</a>
+    <hr />
+    <table id="" class="display table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Nombre del cliente
+                </th>
+                <th>
+                    Nombre del contrato
+                </th>
+                <th>
+                    Valor del contrato
+                </th>
+                <th>
+                    Fecha inicio del contrato
+                </th>
+                <th>
+                    Fecha fin del contrato
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contr in Model.Contrato)
+            {
+                <tr>
+                    <td>
+                        @Model.NombreCliente
+                    </td>
+
+                    <td>
+                        @contr.CodigoContrato
+                    </td>
+                    <td>
+                        @Html.Raw(String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:C0}", Convert.ToDecimal(contr.ValorContrato)))
+
+                    </td>
+                    <td>
+                        @contr.FechaInicioContrato.ToShortDateString()
+                    </td>
+                    <td>
+                        @if (contr.FechaFinContrato.HasValue)
+                {
+                            @contr.FechaFinContrato.Value.ToShortDateString()
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <hr />
+    <table id="" class="display table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr><th colspan="5" style="text-align:center">Historial de prorrogas</th></tr>
+            <tr>
+                <th>Identificador de la prórroga</th>
+                <th>Nombre del cliente</th>
+                <th>Nombre del contrato</th>
+                <th>Fecha Inicio prórroga</th>
+                <th>Fecha Fin prórroga</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var con in Model.Contrato)
+            {
+                foreach (var Prorrogas in con.Prorroga)
+                {
+                    <tr>
+                        <td>@Prorrogas.id</td>
+                        <td>
+                            @Html.DisplayFor(model => model.NombreCliente)
+                        </td>
+                        <td>
+                            @con.CodigoContrato
+                        </td>
+
+                        <td>@Prorrogas.FechaInicioProrroga.ToShortDateString()</td>
+
+                        @if (Prorrogas.FechaFinProrroga.HasValue)
+                    {
+                            <td>@Prorrogas.FechaFinProrroga.Value.ToShortDateString()</td>
+                        }
+                        else
+                        {
+                            <td>@null</td>
+                        }
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+    <hr />
+    <table id="" class="display table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr><th colspan="7" style="text-align:center">Póliza prórrogas</th></tr>
+            <tr>
+                <th>Identificador de la prórroga</th>
+                <th>Nombre del cliente</th>
+                <th>Nombre del contrato</th>
+                <th>Código póliza</th>
+                <th>Nombre de la aseguradora</th>
+                <th>Fecha Inicio póliza</th>
+                <th>Fecha Fin póliza</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var con in Model.Contrato)
+            {
+                foreach (var pro in con.Prorroga)
+                {
+                    foreach (var Polizas in pro.PolizaPro)
+                    {
+                        <tr>
+                            <td>@Polizas.Prorroga.id</td>
+
+                            <td>@Polizas.Prorroga.Contrato.Cliente.NombreCliente</td>
+
+                            <td>@Polizas.Prorroga.Contrato.CodigoContrato</td>
+                            <td>@Polizas.CodigoPoliza</td>
+                            <td>
+                                @Polizas.NombreAseguradora
+                            </td>
+
+                            <td>@Polizas.FechaInicioPoliza.ToShortDateString()</td>
+
+                            <td>@Polizas.FechaFinpoliza.ToShortDateString()</td>
+                        </tr>
+                    }
+                }
+            }
+
+        </tbody>
+    </table>
+    <br />
+    <hr />
+    <table id="" class="display table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th colspan="6" style="text-align:center">Coberturas pólizas prórrogas</th>
+            </tr>
+            <tr>
+                <th>Identificador de la prórroga</th>
+                <th>Nombre del cliente</th>                
+                <th>Código Póliza</th>
+                <th>Descripción de la cobertura</th>
+                <th>Fecha inicio cobertura</th>
+                <th>Fecha fin cobertura</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var con in Model.Contrato)
+            {
+                foreach (var prorrogas in con.Prorroga)
+                {
+                    foreach (var Polizas in prorrogas.PolizaPro)
+                    {
+                        foreach (var Coberturas in Polizas.DetallePoliza)
+                        {
+
+                            <tr>
+                                <td>@Coberturas.Poliza.Prorroga.id</td>
+                                <td>@Coberturas.Poliza.Prorroga.Contrato.Cliente.NombreCliente</td>                                
+                                <td>@Coberturas.Poliza.CodigoPoliza</td>
+                                <td>
+                                    @Coberturas.DescripcionCobertura
+                                </td>
+
+                                <td>@Coberturas.FechaInicioProteccion.ToShortDateString()</td>
+
+                                <td>@Coberturas.FechaFinProteccion.ToShortDateString()</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+    <hr />
+    <table id="Test" class="table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr><th colspan="5" style="text-align:center">Póliza contrato y coberturas</th></tr>
+           
+            <tr>
+                <th>Nombre del cliente</th>
+                <th>Nombre del contrato</th>
+                <th>Nombre de la aseguradora</th>
+                <th>Fecha Inicio póliza</th>
+                <th>Fecha Fin póliza</th>
+            </tr> 
+        </thead>
+        <tbody>
+            
+                @foreach (var con in Model.Contrato)
+                {
+                    foreach (var Polizas in con.Poliza)
+                    {
+                        <tr>
+                            <td>@Polizas.Contrato.Cliente.NombreCliente</td>
+                            <td>@Polizas.Contrato.CodigoContrato</td>
+                            <td>
+                                @Polizas.NombreAseguradora
+                            </td>
+
+                            <td>@Polizas.FechaInicioPoliza.ToShortDateString()</td>
+
+                            <td>@Polizas.FechaFinpoliza.ToShortDateString()</td>
+                        </tr>
+                    }
+                }
+                       
+
+            <tr>                
+                <td><strong>Nombre del contrato</strong></td>
+                <td><strong>Código Póliza</strong></td>
+                <td><strong>Descripción de la cobertura</strong></td>
+                <td><strong>Fecha inicio cobertura</strong></td>
+                <td><strong>Fecha fin cobertura</strong></td>
+            </tr>   
+            
+                @foreach (var con in Model.Contrato)
+                {
+                    foreach (var Polizas in con.Poliza)
+                    {
+                        foreach (var Coberturas in Polizas.DetallePoliza)
+                        {
+                            <tr>
+
+                                <td>@Coberturas.Poliza.Contrato.CodigoContrato</td>
+                                <td>@Coberturas.Poliza.CodigoPoliza</td>
+                                <td>
+                                    @Coberturas.DescripcionCobertura
+                                </td>
+
+                                <td>@Coberturas.FechaInicioProteccion.ToShortDateString()</td>
+
+                                <td>@Coberturas.FechaFinProteccion.ToShortDateString()</td>
+                            </tr>
+                        }
+                    }
+                }
+                            
+
+        </tbody>
+    </table>
+
+</div>
+
+

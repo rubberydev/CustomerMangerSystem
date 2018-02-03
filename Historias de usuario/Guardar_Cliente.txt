@@ -1,0 +1,13 @@
+Descripcion.
+Como usuario quiero poder guardar los datos de un nuevo cliente y asi mantener la persistencia de dicha informacion, tal informacion puede ser Nit, nombre, telefono, direccion, email, url, pais y ciudad.
+
+   -El usuario ingresa los datos en los respectivos campos y le da click en el boton guardar.
+   -La aplicacion valida algunos campos obligatorios como el nit del cliente y el nombre.
+    -De haber campos vacios la aplicacion le pide al usuario que por favor ingrese los campos obligatorios para poder registrar dicha informacion satisfactoriamente.
+    -Los datos se envian desde la aplicacion y son guardados satisfactoriamente en la base de datos.
+    -Se le muestra un mensaje al usuario de que sus datos fueron guardados satisfactoriamente.
+
+Criterios de aceptacion.
+
+-Se digitan registros sin los campos obligatorios y comprobamos si el error para que ingrese los campos necesarios se le muestra al usuario.
+-Ingresamos los datos correctos y verificamos que el boton se ejecuta adecuadamente, posterior a esto validamos que los datos se ingresan correctamente en la base de datos mostrando el respectivo mensaje que da respuesta a esta funcionalidad.

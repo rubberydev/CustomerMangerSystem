@@ -1,0 +1,78 @@
+﻿@model Ingeneo.AppContratos.Models.Cliente
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h2>Detalles cliente</h2>
+    <hr/>
+    <table class="table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pais)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ciudad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.URL)
+                </th>               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Nit)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.NombreCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Pais)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Ciudad)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Telefono)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.URL)
+                </td>
+
+            </tr>
+        </tbody>
+</table>    
+</div>
+<p>
+    <a class="btn btn-primary"  href="/Clientes/Index"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>  
+    <a class="btn btn-warning"  href="/Clientes/Edit/@Model.id">Editar <span class="glyphicon glyphicon-edit"></span></a>    
+</p>

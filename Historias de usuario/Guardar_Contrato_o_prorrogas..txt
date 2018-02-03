@@ -1,0 +1,19 @@
+Descripcion.
+
+Como usuario quiero guardar un contrato y todos sus posibles derivados como un contrato macro,deben haber campos para ingresar informacion tal como:
+
+Tipo de contrato, Fecha inicio y fecha fin en el formato correcto yyyy/mm/dd, y el id del cliente al que pertenece el contrato.
+
+   -Se ingresan los datos en los respectivos campos y se presiona el boton guardar.
+   -El campo del id del cliente es obligatorio, el usuario debe validar que es cliente     al que desea asignar dicho contrato o prorroga.
+   -Teniendo en cuenta que el contrato puede tener una fecha final nula, siendo del         tipo contrato indefinido el campo de duracion en este caso sera nulo tambien, es        importante poner como campo obligatorio por lo menos la fecha inicial.
+   -El usuario debe ingresar un tipo de formato especifico dd/mm/yyyy.
+   -En caso de ingresar el formato incorrecto se le indica al usuario ingresar las         fechas en el formato requerido.
+   -Se almacena la informacion del contrato correctamente.
+   -Se le muestra el mensaje al usuario que la informacion se guardo con exito.
+
+Criterios de aceptacion.
+
+    -Se digitan fechas en formatos incorrectos y se verifica que se visualiza el error     referente al formato de fecha requerido.   
+    -Ingresamos todos los campos y dejamos los campos de fecha vacios y validamos que     se muestre el error al tratar de almacenar los datos.
+    -Ingresamos todos los campos y verificamos que se guardan satisfactoriamente, y que     se le muestra el mensaje al cliente.

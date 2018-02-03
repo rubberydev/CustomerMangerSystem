@@ -1,0 +1,62 @@
+﻿@model Ingeneo.AppContratos.Models.Prorroga
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    
+    <hr />
+    <dl class="mdl-grid">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.Cliente.NombreCliente)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.Cliente.NombreCliente)
+        </dd>  
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.CodigoContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.CodigoContrato)
+        </dd>     
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicioProrroga)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicioProrroga)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinProrroga)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinProrroga)
+        </dd>
+        
+    </dl>
+
+   @using (Html.BeginForm(null, null, FormMethod.Post, new
+   {
+       id = "DeleteExtension"
+   }))
+   {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a class="btn btn-primary" href="/Contratos/Details/@Model.Contratoid"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            <input type="submit"  value="Borrar" onclick="Confirm(this, event);" class="btn btn-danger" />
+        </div>
+    }
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/Extension")
+    
+    }

@@ -1,0 +1,100 @@
+﻿@model Ingeneo.AppContratos.Models.Contrato
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>Detalles Contratos y Prórrogas</h2>
+    <hr />
+    <table class="table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente.NombreCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoContrato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorContrato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaInicioContrato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaFinContrato)
+                </th> 
+                <th></th>                           
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Cliente.NombreCliente)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.CodigoContrato)
+                </td>
+                <td>
+                    @Html.Raw(String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:C0}", Convert.ToDecimal(Model.ValorContrato)))                   
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FechaInicioContrato)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FechaFinContrato)
+                </td>
+                <td>
+                    <a class="btn btn-success" data-toggle="tooltip" title="Agregar póliza" href="/Polizas/Create/@Model.id"> <span class="glyphicon glyphicon-plus"></span></a>
+
+                </td>
+           </tr>
+        </tbody>
+    </table>
+    <hr />
+    <br />
+    <table  class="table table-striped table-hover table-responsive table-bordered">
+        <thead>
+            <tr><th colspan="3" style="text-align:center">Historial de prórrogas</th></tr>
+            <tr>
+                               
+                <th>Fecha Inicio prórroga</th>
+                <th>Fecha Fin prórroga</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+             
+            @foreach (var Prorrogas in Model.Prorroga)
+            {
+            <tr>              
+
+                <td>@Prorrogas.FechaInicioProrroga.ToShortDateString()</td>
+
+                @if (Prorrogas.FechaFinProrroga.HasValue)
+                {
+                    <td>@Prorrogas.FechaFinProrroga.Value.ToShortDateString()</td>
+                }
+                else
+                {
+                    <td>@null</td>
+                }
+                <td>
+                    <a class="btn btn-warning" data-toggle="tooltip" title="Editar prórroga" href="/Prorrogas/Edit/@Prorrogas.id"> <span class="glyphicon glyphicon-edit"></span></a>
+                    <a class="btn btn-danger" data-toggle="tooltip" title="Borrar prórroga" href="/Prorrogas/Delete/@Prorrogas.id"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a class="btn btn-success" data-toggle="tooltip" title="Agregar póliza" href="/PolizasProrroga/Create/@Prorrogas.id"> <span class="glyphicon glyphicon-plus"></span></a>
+                    <a class="btn btn-primary" data-toggle="tooltip" title="Detalle póliza" href="/PolizasProrroga/Details/@Prorrogas.id"> <span class="glyphicon glyphicon-search"></span></a>
+                </td>
+            </tr>
+            }        
+        </tbody>
+    </table>
+</div>
+<p>
+    <a class="btn btn-primary" href="/Contratos/Index"><span class="glyphicon glyphicon-home"></span> Regresar a contratos</a>
+    @*<a class="btn btn-warning" href="/Contratos/Edit/@Model.id">Editar contrato <span class="glyphicon glyphicon-edit"></span></a>*@ 
+</p>

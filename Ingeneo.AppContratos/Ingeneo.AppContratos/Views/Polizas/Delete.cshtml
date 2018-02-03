@@ -1,0 +1,78 @@
+﻿@model Ingeneo.AppContratos.Models.Poliza
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>   
+    <hr />
+    <dl class="mdl-grid">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.Cliente.NombreCliente)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.Cliente.NombreCliente)
+        </dd>      
+        <dd>
+            @Html.DisplayFor(model => model.Prorroga.Contrato.Cliente.NombreCliente)
+        </dd>  
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPoliza)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPoliza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreAseguradora)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.NombreAseguradora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicioPoliza)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicioPoliza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinpoliza)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinpoliza)
+        </dd>
+
+    </dl>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new
+        {
+            id = "DeletePolicy"
+        }))
+        {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (Model.idProrroga != null)
+            {
+            <a class="btn btn-primary" href="/PolizasProrroga/Details/@Model.idProrroga"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            }
+            else
+            {
+                <a class="btn btn-primary" href="/Polizas/Details/@Model.idContrato"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            }
+
+            <input type="submit"  onclick="Confirm(this,event)" value="Borrar" class="btn btn-danger" />
+        </div>
+        }
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/Policy")
+
+}

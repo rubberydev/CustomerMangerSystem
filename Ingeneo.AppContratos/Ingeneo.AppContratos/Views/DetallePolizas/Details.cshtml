@@ -1,0 +1,74 @@
+﻿@model Ingeneo.AppContratos.Models.DetallePoliza
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4>Detalle Coberturas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.Contrato.Cliente.NombreCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.Contrato.Cliente.NombreCliente)
+        </dd>
+        <br>
+        <hr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.FechaInicioPoliza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.FechaInicioPoliza)
+        </dd>
+        <br>
+        <hr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.FechaFinpoliza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.FechaFinpoliza)
+        </dd>
+        <br>
+        <hr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.NombreAseguradora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.NombreAseguradora)
+        </dd>
+        <br>
+        <hr>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicioProteccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicioProteccion)
+        </dd>
+        <br>
+        <hr>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinProteccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinProteccion)
+        </dd>
+        <br>
+        <hr>
+    </dl>
+</div>
+<p>
+    <a class="btn btn-primary" href="/DetallePolizas/Index"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+    <a class="btn btn-warning" href="/DetallePolizas/Edit/@Model.id">Editar <span class="glyphicon glyphicon-edit"></span></a>  
+</p>

@@ -1,0 +1,25 @@
+.page-header{
+    
+    padding: 50px 0px 15px 265px;
+    border-radius: 5px;
+    font-weight: bold;
+    background: url("/fonts/Ingeneo.jpg");
+    background-repeat: no-repeat;
+    
+}
+h1 > small{
+    margin: 20px 0px 10px 40px;
+}
+
+.nav nav-tabs{
+    background-color: darkgray;
+}
+.form-group{
+    padding: 20px 15px;
+}
+.btn btn-primary{
+    margin-left: 30px;
+}
+#back {
+    margin:5px;
+}

@@ -1,0 +1,94 @@
+﻿@model Ingeneo.AppContratos.Models.Cliente
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    
+    <hr />
+    <dl class="mdl-grid">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nit)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Nit)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCliente)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.NombreCliente)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.URL)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.URL)
+        </dd>
+        
+    </dl>
+
+  @using (Html.BeginForm(null, null, FormMethod.Post, new
+  {
+      id = "DeleteCustomer"
+  }))
+  {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">            
+            <a class="btn btn-primary" href="/Clientes/Index"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            <input type="submit" id="submitButton" value="Borrar" onclick="Confirm(this, event);" class="btn btn-danger" />                
+        </div>
+    }
+</div>
+@section Scripts{
+   @Scripts.Render("~/bundles/Customer")
+
+}

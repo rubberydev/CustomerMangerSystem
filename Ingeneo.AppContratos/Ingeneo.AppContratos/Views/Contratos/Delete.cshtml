@@ -1,0 +1,72 @@
+﻿@model Ingeneo.AppContratos.Models.Contrato
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    
+    <hr/>
+    <dl class="mdl-grid">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.NombreCliente)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.NombreCliente)
+        </dd>
+              
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoContrato)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.CodigoContrato)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorContrato)
+        </dt>
+
+        <dd>
+            @Html.Raw(String.Format(System.Globalization.CultureInfo.CreateSpecificCulture("es-CO"), "{0:C0}", Convert.ToDecimal(Model.ValorContrato)))
+            
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicioContrato)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicioContrato)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinContrato)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinContrato)
+        </dd>
+        
+    </dl>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new
+    {
+        id = "DeleteAgreement"
+    }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a class="btn btn-primary" href="/Contratos/Index"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            <input type="submit" id="submitButton"  onclick="Confirm(this, event);" value="Borrar" class="btn btn-danger"/>
+        </div>
+    }
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/Agreement")
+
+}

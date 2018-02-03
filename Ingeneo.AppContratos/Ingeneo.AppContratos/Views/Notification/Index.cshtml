@@ -1,0 +1,271 @@
+﻿@model IEnumerable<Ingeneo.AppContratos.ModelViews.Notification>
+@{
+    ViewBag.Title = "Notificaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{    
+    <div id="Con"></div>
+    <div id="Con5"></div>
+    <hr size="2"/>
+    <div id="Pro"></div>
+    <div id="Pro5"></div>
+    <hr size="2"/>
+    <div id="Pol"></div>
+    <div id="Pol5"></div>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "/api/ContratoNotification",
+                    datatype: 'json',
+                    cache: false,
+                })
+                .success(function (data) {
+                    var response = data.array;
+                    if (data.length == 0) {
+                        console.log("Empty object");
+                    } else {
+                        var output = '';
+                        output += '<h2>Contratos 10 días para concluir.</h2>';
+                        output += '<table class="table table-striped table-hover table-responsive table-bordered">';
+                        output += '<thead><tr style="background:#0945a5; color:#ffffff"><th>Nombre del Contrato</th><th>Nombre del Cliente</th><th>Valor del Contrato</th><th>Fecha de Inicio</th><th>Fecha Fin contrato</th><th></th></tr></thead>';
+                        for (var i = 0; i < data.length; i++) {
+                            output += '<tr>';
+                            output += '<td>' + data[i].CodigoContrato + '</td>';
+                            output += '<td>' + data[i].NombreCliente + '</td>';
+                            output += '<td> <b>$</b> ' + data[i].ValorContrato + '</td>';
+                            output += "<td id='date'>" + data[i].FechaInicio + "</td>";
+                            output += '<td>' + data[i].FechaFin + '</td>';
+                            output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Contrato" href="/Contratos/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                            output += '</tr>';
+                        }
+                        output += '</table>';
+                        $('#Con').html(output);
+                    }                     
+                })
+                .error(function (hxr, ajaxOptions, throwError) {
+                    $('#Con').html('Error!');
+                });
+            });
+        })
+    </script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "/api/Contrato5",
+                    datatype: 'json',
+                    cache: false,
+                })
+                .success(function (data) {
+                    var response = data.array;
+                    if (data.length == 0) {
+                        console.log("Empty object");
+                    } else {
+                        var output = '';
+                        output += '<h2>Contratos 5 dias para concluir.</h2>';
+                        output += '<table class="table table-striped table-hover table-responsive table-bordered">';
+                        output += '<thead><tr style="background:#0945a5; color:#ffffff"><th>Nombre del Contrato</th><th>Nombre del Cliente</th><th>Valor del Contrato</th><th>Fecha de Inicio</th><th>Fecha Fin contrato</th><th></th></tr></thead>';
+                        for (var i = 0; i < data.length; i++) {
+                            output += '<tr>';
+                            output += '<td>' + data[i].CodigoContrato + '</td>';
+                            output += '<td>' + data[i].NombreCliente + '</td>';
+                            output += '<td><b>$</b> ' + data[i].ValorContrato + '</td>';
+                            output += '<td>' + data[i].FechaInicio + '</td>';
+                            output += '<td>' + data[i].FechaFin + '</td>';
+                            output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Contrato" href="/Contratos/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                            output += '</tr>';
+                        }
+                        output += '</table>';
+                        $('#Con5').html(output);
+                    }
+                })
+                .error(function (hxr, ajaxOptions, throwError) {
+                    $('#Con5').html('Error!');
+                });
+                return false;
+            });
+        })
+</script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "/api/Prorrogas",
+                    datatype: 'json',
+                    cache: false,
+                })
+                .success(function (data) {
+                    var response = data.array;
+                    if (data.length == 0) {
+                        console.log("Empty object");
+                    } else {
+                        var output = '';
+                        output += '<h2>Prorrogas 10 días para concluir.</h2>';
+                        output += '<table class="table table-striped table-hover table-responsive table-bordered">';
+                        output += '<thead><tr style="background:#0B610B; color:#ffffff"><th>Nombre del Contrato</th><th>Fecha de Inicio</th><th>Fecha Fin Prorroga</th><th></th></tr></thead>';
+                        for (var i = 0; i < data.length; i++) {
+                            output += '<tr>';
+                            output += '<td>' + data[i].CodigoContrato + '</td>';
+                            output += '<td>' + data[i].FechaInicio + '</td>';
+                            output += '<td>' + data[i].FechaFin + '</td>';
+                            output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Prorroga" href="/Contratos/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                            output += '</tr>';
+                        }
+                        output += '</table>';
+                        $('#Pro').html(output);
+                    }                    
+                })
+                .error(function (hxr, ajaxOptions, throwError) {
+                    $('#Pro').html('Error!');
+                });
+                return false;
+            });
+        })
+</script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "/api/Prorrogas5",
+                    datatype: 'json',
+                    cache: false,
+                })
+                .success(function (data) {
+                    var response = data.array;
+                    if (data.length == 0) {
+                        console.log("Empty object");
+                    } else {
+                        var output = '';
+                        output += '<h2>Prorrogas 5 días para concluir.</h2>';
+                        output += '<table class="table table-striped table-hover table-responsive table-bordered">';
+                        output += '<thead><tr style="background:#0B610B; color:#ffffff"><th>Nombre del Contrato</th><th>Fecha de Inicio</th><th>Fecha Fin Prorroga</th><th></th></tr></thead>';
+                        for (var i = 0; i < data.length; i++) {
+                            output += '<tr>';
+                            output += '<td>' + data[i].CodigoContrato + '</td>';
+                            output += '<td>' + data[i].FechaInicio + '</td>';
+                            output += '<td>' + data[i].FechaFin + '</td>';
+                            output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Prorroga" href="/Contratos/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                            output += '</tr>';
+                        }
+                        output += '</table>';
+                        $('#Pro5').html(output);
+                    }                    
+                })
+                .error(function (hxr, ajaxOptions, throwError) {
+                    $('#Pro5').html('Error!');
+                });
+                return false;
+            });
+        })
+</script>
+
+    <script type="text/javascript">
+            $(function () {
+                $(document).ready(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "/api/Polizas",
+                        datatype: 'json',
+                        cache: false,
+                    })
+                    .success(function (data) {
+                        var response = data.array;
+                        if (data.length == 0) {
+                            console.log("Empty object");
+                        } else {
+                            var output = '';
+                            output += '<h2>Polizas 10 días para concluir.</h2>';
+                            output += '<table class="table table-striped table-hover table-responsive table-bordered">';
+                            output += '<thead><tr style="background:#FFBF00; color:#ffffff"><th>Nombre Aseguradora</th><th>Nombre Contrato</th><th>Fecha Inicio Poliza</th><th>Fecha Fin Poliza</th><th></th></tr></thead>';
+                            for (var i = 0; i < data.length; i++) {
+                                if (data[i].CodigoContrato == null) {
+                                    output += '<tr>';
+                                    output += '<td>' + data[i].NombreAseguradora + '</td>';
+                                    output += '<td>Esta Poliza pertenece a una Prorroga, <br> para información del contrato asociado ver detalle</td>';
+                                    output += '<td>' + data[i].FechaInicio + '</td>';
+                                    output += '<td>' + data[i].FechaFin + '</td>';
+                                    output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Poliza" href="/PolizasProrroga/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                                } else {
+                                    output += '<tr>';
+                                    output += '<td>' + data[i].NombreAseguradora + '</td>';
+                                    output += '<td>' + data[i].CodigoContrato + '</td>';
+                                    output += '<td>' + data[i].FechaInicio + '</td>';
+                                    output += '<td>' + data[i].FechaFin + '</td>';
+                                    output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Poliza" href="/Polizas/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                                }                           
+                                output += '</tr>';
+                            }
+                            output += '</table>';
+                            $('#Pol').html(output);
+                        }                        
+                    })
+                    .error(function (hxr, ajaxOptions, throwError) {
+                        $('#Pol').html('Error!');
+                    });
+                    return false;
+                });
+            })
+    </script>
+
+    <script>
+                $(function () {
+                    $(document).ready(function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: "/api/Polizas5",
+                            datatype: 'json',
+                            cache: false,
+                        })
+                        .success(function (data) {
+                            var response = data.array;
+                            if (data.length == 0) {
+                                console.log("Empty object");
+                            } else {
+                                var output = '';
+                                output += '<h2>Polizas 5 días para concluir.</h2>';
+                                output += '<table class="table table-striped table-hover table-responsive table-bordered">';
+                                output += '<thead><tr style="background:#FFBF00; color:#ffffff"><th>Nombre Aseguradora</th><th>Nombre Contrato</th><th>Fecha Inicio Poliza</th><th>Fecha Fin Poliza</th><th></th></tr></thead>';
+                                for (var i = 0; i < data.length; i++) {
+                                    if (data[i].CodigoContrato == null) {
+                                        output += '<tr>';
+                                        output += '<td>' + data[i].NombreAseguradora + '</td>';
+                                        output += '<td>Esta Poliza pertenece a una Prorroga, <br> para información del contrato asociado ver detalle</td>';
+                                        output += '<td>' + data[i].FechaInicio + '</td>';
+                                        output += '<td>' + data[i].FechaFin + '</td>';
+                                        output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Poliza" href="/PolizasProrroga/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                                    }else {
+                                        output += '<tr>';
+                                        output += '<td>' + data[i].NombreAseguradora + '</td>';
+                                        output += '<td>' + data[i].CodigoContrato + '</td>';
+                                        output += '<td>' + data[i].FechaInicio + '</td>';
+                                        output += '<td>' + data[i].FechaFin + '</td>';
+                                        output += '<td align="center"><a class="btn btn-info" data-toggle="tooltip" title="Detalle Poliza" href="/Polizas/Details/' + data[i].id + '"><span class="glyphicon glyphicon-search"></span></a></td>';
+                                    }                                    
+                                    output += '</tr>';
+                                }
+                                output += '</table>';
+                                $('#Pol5').html(output);
+                            }                            
+                        })
+                        .error(function (hxr, ajaxOptions, throwError) {
+                            $('#Pol5').html('Error!');
+                        });
+                        return false;
+                    });
+                })
+    </script>
+}

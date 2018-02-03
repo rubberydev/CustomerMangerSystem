@@ -1,0 +1,18 @@
+Descripcion.
+
+Como usuario quiero especificar las diferentes dependencias o amparos que puede tener una poliza para esta informacion se genera los campos  fecha inicial y fecha final en el formato correcto dd/mm/yyyy, y codigo de poliza a la que pertenece esta proteccion estos campos tambien deben de ser obligatorios.
+
+    -El usuario ingresa los datos de la proteccion y la respectiva referencia de la          poliza a la que pertenece y da clic en el boton guardar.
+    -Si alguno de los campos esta vacio se le muestra un error que debe ingresar todos      los campos obligatorios.
+    -Si el campo de codigo poliza que hace referencia a la poliza que pertenece la           proteccion esta vacio tambien se genera un error indicando que este campo es           obligatorio.
+    -Si el formato de la fecha no es correcto se genera un error que le indica al           usuario el formato de la fecha requerida.
+    -Si la fecha inicial es mayor a la fecha final se visualiza el error respectivo.
+    -Los datos se almacenan correctamente en la base de datos.
+    -Se visualiza un mensaje que dice que los datos fueron guardados correctamente.
+
+Criterios de aceptacion.
+
+    -Se ingresan las fechas en un formato incorrecto y se valida que el error           respectivo     se visualice correctamente.
+    -Se ingresa la fecha inicial mayor a la fecha final y se verifica que el error           respectivo valida y se muestra correctamente.
+    -Dejamos campos vacios para comprobar que se visializa el error correctamente de         campos obligatorios.
+    -Si ingresan todos los datos requeridos y comprobar que el almacenamiento de datos      se realiza correctamente y su respectivo mensaje que corrobora dicha tarea           funciona adecuadamente.

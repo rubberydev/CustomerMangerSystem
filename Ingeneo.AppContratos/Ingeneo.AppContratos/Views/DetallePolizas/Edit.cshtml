@@ -1,0 +1,77 @@
+﻿@model Ingeneo.AppContratos.Models.DetallePoliza
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new
+{
+    id = "SaveFormPolicyDetails"
+}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h2>Editar Coberturas</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescripcionCobertura, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescripcionCobertura, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DescripcionCobertura, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaInicioProteccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class='input-group date' id='datetimepicker6' style="width:280px">
+                    @Html.EditorFor(model => model.FechaInicioProteccion, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                    @Html.ValidationMessageFor(model => model.FechaInicioProteccion, "", new { @class = "text-danger" })
+              </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaFinProteccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class='input-group date' id='datetimepicker7' style="width:280px">
+                    @Html.EditorFor(model => model.FechaFinProteccion, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(model => model.FechaFinProteccion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">            
+            <div class="col-md-10">
+                @Html.Hidden("PolizaId", null, htmlAttributes: new { @class = "form-control" })                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" onclick="Validate(this, event);" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="btn btn-primary" href="/Contratos/Index"><span class="glyphicon glyphicon-home"></span> Regresar a contratos</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ValCobPolicy.js")
+}

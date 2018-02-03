@@ -1,0 +1,12 @@
+Descripcion.
+
+Como cliente quiero tener un panel de notificaciones que me informe de las polizas, amparos de una poliza y contratos que estan proximos a su vencimiento para la gestion oportuna de las prorrogas que puedan generarse posiblemente,  se implementa el selector para gestionar las notificaciones, puede ser borrar archivar o exportar 
+
+  -La aplicacion compara la fecha actual con la fecha final del contrato poliza y/o proteccion diariamente.
+  -Todos los contratos poliza y/o proteccion que esten aproximados a vencerse en un mes, generan una notificacion que debe mostrarse al usuario automaticamente.
+  -visualizar las diferentes opciones para gestionar la notificaciones.
+
+Criterios de aceptacion.
+
+  -Validar con un rango de fecha relativamente corto, almacenado en base de datos para comprobar que se genera dicha notificacion.
+  -Validar que las diferentes opciones de gestion de notificaciones funcionan correctamente.

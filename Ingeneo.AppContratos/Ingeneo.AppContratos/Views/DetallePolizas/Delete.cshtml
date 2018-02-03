@@ -1,0 +1,85 @@
+﻿@model Ingeneo.AppContratos.Models.DetallePoliza
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+   
+    <hr />
+    <dl class="mdl-grid">
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.Contrato.Cliente.NombreCliente)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.Contrato.Cliente.NombreCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.NombreAseguradora)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.NombreAseguradora)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionCobertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionCobertura)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Poliza.CodigoPoliza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poliza.CodigoPoliza)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicioProteccion)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicioProteccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinProteccion)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinProteccion)
+        </dd>
+
+    </dl>
+
+   @using (Html.BeginForm(null, null, FormMethod.Post, new
+   {
+       id = "DeleteCober"
+   }))
+   {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (Model.Poliza.idContrato != null)
+            {
+            <a class="btn btn-primary" href="/Polizas/Details/@Model.Poliza.idContrato"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            }
+            else
+            {
+                <a class="btn btn-primary" href="/PolizasProrroga/Details/@Model.Poliza.idProrroga"><span class="glyphicon glyphicon-arrow-left"></span> Regresar</a>
+            }
+            <input type="submit" value="Borrar" onclick="Confirm(this,event);" class="btn btn-danger" />
+        </div>
+    }
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/PolicyCob")
+
+}

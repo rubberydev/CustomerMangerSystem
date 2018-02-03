@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu principal</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/Styles.css">     
+</head>
+<body>    
+    @*<script>
+        Push.create("MAMBRU SE FUE!", {
+        body: "MAMA ME LA BOLA NEGRA!!!",
+        icon: '/fonts/icon.png',
+        timeout: 8000,
+        onClick: function () {
+            window.focus();
+            this.close();
+            }
+        });
+    </script>*@ 
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header">
+                    <h1><small>S.A.S</small></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin") || User.IsInRole("Monitor") || User.IsInRole("Analista"))
+    {
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="/Clientes/Index">Clientes</a></li>                   
+                    <li role="presentation"><a href="/Contratos/Index">Contratos</a></li>               
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    }
+}
+    <div class="container-fluid">        
+        <div class="row">
+            <div class="col-sm-5">
+                <h1>Nuestros clientes</h1>
+                <ul>
+                    <li>Argos</li>
+                    <li>Avianca</li>
+                    <li>Colombia Móvil</li>
+                    <li>Fabricato</li>
+                    <li>Flamingo</li>
+                    <li>GCO</li>
+                    <li>Grupo Éxito</li>
+                    <li>Hospital Pablo Tobón Uribe</li>
+                    <li>JDH Distribuciones</li>
+                    <li>Premex</li>
+                    <li>PrimeStone</li>
+                    <li>Sistema Gestor</li>
+                    <li>Tigo Africa</li>
+                    <li>Tigo Centroamérica</li>
+                    <li>UNE</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

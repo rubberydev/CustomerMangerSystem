@@ -1,0 +1,15 @@
+Descripcion.
+
+Como usuario quiero que en esta sesion de clientes pueda buscar la informacion referente a un cliente indicando en sus respectivos campos el nombre del cliente, con la finalidad de acceder mas facilmente a la informacion de un determinado cliente  todos estos datos se visualizaran en un reporte dinamico,. y con las opciones de generar un reporte que se exporte a un formato de excel, pdf, copiar datos, o  imprimir.
+
+    -En esta sesion el usuario el nombre del cliente en el campo de busqueda in mediatamente se filtran los clientes a traves de la palabra clave ingresada.
+   - En caso de que el criterio de busqueda no coincida con algun regsitro se le muestra un mensaje al usuario de que no hay registros que coincidan con el criterio de busqueda.
+    -Intentar de nuevo la busqueda.
+    -La respectiva informacion del cliente es mostrada al usuario.
+    -El usuario tiene una opcion que le permite generar el reporte de la informacion de un cliente e informacion relacionada a el, como fechas de inicio y fin de contratos, prorrogas  y polizas, nombre de la aseguradora y los diferentes amparos o protecciones que se derivan de una poliza.
+
+Criterios de aceptacion.
+
+-Ingresar un nombre incorrecto y verificar que se visualiza el mensaje.
+-Ingresar un dato correcto y comprobar que trae los datos respectivos de un determinado cliente.
+-Ejecutar la funcion de generar reporte y verificar que se genera y exporta correctamente.

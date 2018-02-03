@@ -1,0 +1,19 @@
+Descripcion.
+
+Como usuario quiero registrar la poliza que pertenece a un contrato en caso tal de tenerla, estos campos estaran en el mismo formulario de los contratos y tendra campos tales como:
+
+Nombre de la aseguradora, fecha inicio y fecha fin de la poliza todos estos campos deben ser obligatorios y las fechas deben guardarse en el formato correcto yyyy/mm/dd, y el id del contrato al que pertenece la poliza debe haber un boton para la funcion de guardar.
+
+
+    -El usuario ingresa los datos de la poliza y id del contrato al que pertenece.
+    -Clic en  el boton guardar. 
+    -El campo id del contrato es obligatorio por tanto la aplicacion valida de que no      se encuentre vacio de ser asi le informa al usuario que este campo es requerido.
+    -Si el formato de la fecha no es correcto se visualiza el error indicandole al     usuario el formato requerido.
+    -La  poliza se registra satisfactoriamente en la base de datos.
+    -Se le muestra el respectivo mensaje al usuario de que sus datos fueron guardados     satisfactoriamente.
+
+Criterios de aceptacion.
+
+-Se digita un formato incorrecto de fecha y verificamos que el error respectivo se visualiza correctamente.
+-Dejamos alguno de los campos vacio y se comprueba si el error de todos los campos obligatorios funciona adecuadamente.
+-Se ingresan todos los campos necesarios y se verifica que todos los datos se guardan correctamente.
